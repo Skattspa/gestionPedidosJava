@@ -29,14 +29,14 @@ public class OrderService {
     private ModelMapper modelMapper;
 
     @Transactional
-    public Order createNewOrder(Long idUsuario, String nombreOrden){
+    public Order createNewOrder(Long idUsuario, String nombreOrden, double precio) throws OrderServiceException {
 
         logger.info("Creating new order" + nombreOrden + "to the user" + idUsuario);
         Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
         if (usuario == null) {
             throw new OrderServiceException("Order"+ nombreOrden+ " not found");
         }
-        Order order = new Order(usuario, nombreOrden);
+        Order order = new Order(usuario, nombreOrden, precio);
         orderRepository.save(order);
         return modelMapper.map(order, Order.class);
     }

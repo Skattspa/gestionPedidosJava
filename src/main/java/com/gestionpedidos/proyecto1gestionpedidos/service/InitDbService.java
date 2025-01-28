@@ -28,10 +28,10 @@ public class InitDbService {
         usuario.setPassword("123");
         usuarioRepository.save(usuario);
 
-        Order order1 = new Order(usuario, "Lavar coche");
+        Order order1 = new Order(usuario, "Lavar coche", 30);
         orderRepository.save(order1);
 
-        Order order2 = new Order(usuario, "Renovar DNI");
+        Order order2 = new Order(usuario, "Renovar DNI",14);
         orderRepository.save(order2);
     }
 

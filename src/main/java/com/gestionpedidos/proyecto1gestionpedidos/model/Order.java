@@ -17,6 +17,7 @@ public class Order implements Serializable {
     private Long id;
     @NotNull
     private String titulo;
+    private double precio;
 
     @ManyToOne
     // Nombre de la columna en la BD que guarda físicamente
@@ -31,8 +32,9 @@ public class Order implements Serializable {
     @NotNull
     // Relación muchos-a-uno entre ordenes y usuario
     // Al crear una orden la asociamos automáticamente a un usuario
-    public Order(Usuario usuario, String titulo) {
+    public Order(Usuario usuario, String titulo, double precio) {
         this.titulo = titulo;
+        this.precio = precio;
         setUsuario(usuario); // Esto añadirá la orden a la lista de ordenes del usuario
     }
 
@@ -52,6 +54,13 @@ public class Order implements Serializable {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    public double getPrecio() {
+        return precio;
     }
 
     // Getters y setters de la relación muchos-a-uno con Usuario

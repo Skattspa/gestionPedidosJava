@@ -41,9 +41,9 @@ public class OrderControllerTests {
         UsuarioData usuarioNuevo = usuarioService.registrar(usuario);
 
         // Y añadimos dos tareas asociadas a ese usuario
-        Order order1 = orderService.createNewOrder(usuarioNuevo.getId(), "Comprar patatas");
+        Order order1 = orderService.createNewOrder(usuarioNuevo.getId(), "Comprar patatas",6);
                 //.nuevaTareaUsuario(usuarioNuevo.getId(), "Lavar coche");
-        orderService.createNewOrder(usuarioNuevo.getId(), "Comprar limones");
+        orderService.createNewOrder(usuarioNuevo.getId(), "Comprar limones",2);
 
         // Devolvemos los ids del usuario y de la primera tarea añadida
         Map<String, Long> ids = new HashMap<>();
@@ -68,7 +68,7 @@ public class OrderControllerTests {
         //UsuarioData usuarioNuevo = usuarioService.registrar(usuario);
 
         // Crear un nuevo pedido
-        Order order = orderService.createNewOrder(usuario.getId(), "Test Order");
+        Order order = orderService.createNewOrder(usuario.getId(), "Test Order",10);
 
         // Intentar actualizar el pedido con un objeto OrderData
         OrderData orderData = new OrderData();
